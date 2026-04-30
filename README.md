@@ -5,8 +5,6 @@
 * Docker
 * Docker-compose
 * htpasswd命令
-* Ubuntu 20.04及以上
-
 
 ---
 
@@ -35,7 +33,8 @@ bash set-password.sh
 ```
 docker-compose up -d 
 ```
-启动的组件包含Prometheus、Alertmanager、Grafana、Blackbox_exporter, 其中Grafana没有额外配置SSL和基础认证。
+启动的服务包含Prometheus、Alertmanager、Grafana、Blackbox_exporter四个组件。   
+Grafana默认带有登录认证，如果要给Grafana配置TLS，更推荐使用Nginx反向代理。
 
 **访问服务**
 
@@ -55,10 +54,10 @@ rm -r prom-compose
 ```
 
 **安装启动Node_exporter**  
-必要前提：如果启用SSL和基础认证，必须先执行“生成证书和设置密码”步骤！
+必要前提：如果启用TLS和基础认证，必须先执行“**生成证书和设置密码**”的步骤！
 ```
 cd node-exporter
 bash install_node_exporter.sh
 ```
-如果需要在其它多台服务器上安装Node_exporter，可以直接把node-exporter目录复制到其它服务器，然后执行`bash install_node_exporter.sh`即可。
+如果需要在其它多台服务器上安装Node_exporter，可以直接把Node-exporter目录复制到其它服务器，然后执行`bash install_node_exporter.sh`即可。
 
