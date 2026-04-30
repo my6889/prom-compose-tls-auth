@@ -1,0 +1,11 @@
+groups:
+  - name: tcp_down
+    rules:
+    - alert: 端口存活探测失败
+      expr: probe_success == 0
+      for: 5m
+      labels:
+        severity: "error"
+      annotations:
+        summary: "{{$labels.instance}} : 端口存活探测失败"
+        value: Down
