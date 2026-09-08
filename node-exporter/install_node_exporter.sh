@@ -15,19 +15,19 @@ case "$choice" in
   1)
     echo ""
     echo "Installing Node Exporter (Standard)..."
-    chmod +x ./node_exporter-1.11.1
-    cp ./node_exporter-1.11.1 /usr/local/bin/node_exporter
+    chmod +x ./node_exporter-1.12.1
+    cp ./node_exporter-1.12.1 /usr/local/bin/node_exporter
     cp ./node_exporter.service /etc/systemd/system/node_exporter.service
     ;;
   2)
     echo ""
     echo "Installing Node Exporter (TLS & Basic Auth)..."
-    chmod +x ./node_exporter-1.11.1
-    cp ./node_exporter-1.11.1 /usr/local/bin/node_exporter
+    chmod +x ./node_exporter-1.12.1
+    cp ./node_exporter-1.12.1 /usr/local/bin/node_exporter
     mkdir -p /etc/node_exporter
     cp ./web-auth.yml /etc/node_exporter/web-auth.yml
-    cp ../ssl-auth-config/server.crt /etc/node_exporter/server.crt
-    cp ../ssl-auth-config/server.key /etc/node_exporter/server.key
+    cp ./server.crt /etc/node_exporter/server.crt
+    cp ./server.key /etc/node_exporter/server.key
     cp ./node_exporter_auth.service /etc/systemd/system/node_exporter.service
     ;;
   *)

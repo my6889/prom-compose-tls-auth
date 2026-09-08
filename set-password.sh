@@ -17,6 +17,13 @@ openssl req -x509 -nodes -days 7300 -newkey rsa:2048 \
 chmod 777 ./ssl-auth-config/server.key ./ssl-auth-config/server.crt
 echo "Generated SSL certificate and key."
 
+echo "Copying SSL certificate and key to node-exporter directory..."
+cp ./ssl-auth-config/server.crt ./node-exporter/server.crt
+cp ./ssl-auth-config/server.key ./node-exporter/server.key
+tar -czvf node-exporter-installer-copy-this.tar.gz ./node-exporter
+echo "Copied SSL certificate and key to node-exporter directory and created tarball."
+echo "You can now use the 'node-exporter-installer-copy-this.tar.gz' file to install Node Exporter on your target machine."
+
 echo "Generated password for basic authentication. Please save the following credentials:"
 echo "Username: admin"
 echo "Password: $PASSWORD"

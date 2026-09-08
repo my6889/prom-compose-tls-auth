@@ -1,6 +1,6 @@
 services:
   prometheus:
-    image: prom/prometheus:v3.11.2
+    image: prom/prometheus:v3.14.0
     container_name: prometheus
     volumes:
       - './prometheus/prometheus.yml:/etc/prometheus/prometheus.yml'
@@ -15,7 +15,7 @@ services:
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
       - '--web.config.file=/etc/web-auth.yml'
-      - '--storage.tsdb.retention.time=90d'
+      - '--storage.tsdb.retention.time=360d'
     ports:
       - 9090:9090
     restart: always
@@ -25,7 +25,7 @@ services:
       - alertmanager
 
   alertmanager:
-    image: prom/alertmanager:v0.32.0
+    image: prom/alertmanager:v0.34.0
     container_name: alertmanager
     volumes:
       - './alertmanager:/etc/alertmanager'
@@ -42,7 +42,7 @@ services:
       - prom
 
   grafana:
-    image: grafana/grafana:13.0.1
+    image: grafana/grafana:13.2.1
     container_name: grafana
     volumes:
       - 'grafana-pv:/var/lib/grafana'

@@ -3,7 +3,7 @@ Description=Node Exporter
  
 [Service]
 User=root
-ExecStart=/usr/local/bin/node_exporter --web.config.file="/etc/node_exporter/web-auth.yml"
+ExecStart=/usr/local/bin/node_exporter --web.config.file="/etc/node_exporter/web-auth.yml" --web.listen-address=":9100"
  
 [Install]
 WantedBy=default.target

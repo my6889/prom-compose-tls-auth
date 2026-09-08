@@ -48,7 +48,7 @@ https://宿主机IP:9115    # Blackbox_exporter
 <font color=#FF0000 >**完全移除**</font> 
 
 ```
-# 慎重操作
+# 慎重操作（容器卷将会直接被删除且无法恢复）
 docker-compose down -v 
 rm -r prom-compose
 ```
@@ -59,5 +59,5 @@ rm -r prom-compose
 cd node-exporter
 bash install_node_exporter.sh
 ```
-如果需要在其它多台服务器上安装Node_exporter，可以直接把Node-exporter目录复制到其它服务器，然后执行`bash install_node_exporter.sh`即可。
+如果需要在其它多台服务器上安装带有TLS和基础认证的Node_exporter，可以直接把生成的`node-exporter-installer-copy-this.tar.gz`文件复制到目标服务器，解压后执行`bash install_node_exporter.sh`即可。
 
